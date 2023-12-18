@@ -43,6 +43,10 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody m_RigidBody;
     public GameObject m_Camera;
     CapsuleCollider m_Collider;
+    PlayerPowerManager m_PowerManager;
+
+    Vector3 m_SpawnPosition = Vector3.zero;
+
 
     // Start is called before the first frame update
     void Start()
@@ -53,11 +57,19 @@ public class PlayerMovement : MonoBehaviour
 
         m_Collider = GetComponent<CapsuleCollider>();
 
+        m_PowerManager = GetComponent<PlayerPowerManager>();
+
         m_bIsJumping = false;
         m_AllowJump = true;
 
         m_GroundCheckMask = ~LayerMask.GetMask("Player", "Ignore Raycast");
     }
+
+    private void Awake()
+    {
+        m_SpawnPosition = transform.position;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -352,6 +364,17 @@ public class PlayerMovement : MonoBehaviour
         m_RigidBody.AddForce(velocityDiff, ForceMode.VelocityChange);
     }
 
+
+
+    public void Respawn()
+    {
+        transform.position = m_SpawnPosition;
+
+        if (m_PowerManager != null)
+        {
+            m_PowerManager.m_CurrentPower = m_PowerManager.m_MaxPower;
+        }
+    }
 
     enum MovementState
     {

@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
             return Vector3.zero;
         }
 
-        return new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+        return new Vector3(Input.GetAxis("Mouse Y") * 2.0f, Input.GetAxis("Mouse X") * 2.0f, 0);
     }
 
     public Vector3 GetMoveInput()

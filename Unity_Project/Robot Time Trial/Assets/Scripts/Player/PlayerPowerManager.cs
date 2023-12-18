@@ -35,9 +35,10 @@ public class PlayerPowerManager : MonoBehaviour
         {
             m_CurrentPower -= Time.fixedDeltaTime * m_PowerDepletionMultiplier;
 
-            if  (m_CurrentPower < 0.0f)
+            if  (m_CurrentPower <= 0.0f)
             {
                 m_CurrentPower = 0.0f;
+                m_MovementReference.Respawn();
             }
 
         }
