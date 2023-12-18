@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Vector3 m_Position;
     Vector3 m_LocalDirection;
     public float m_Speed;
 
     float GravityAccel = -10.0f;
-    Vector3 m_Velocity = Vector3.zero;
+    public Vector3 m_Velocity = Vector3.zero;
     Vector3 m_GroundVelocity = Vector3.zero;
     float m_RotationSpeed = 3.14159f;
 
@@ -18,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float GroundCheckStartOffsetY = 0.5f;
     public float CheckForGroundRadius = 0.5f;
     int m_GroundCheckMask;
-    Vector3 m_GroundNormal = new Vector3 (0, 1.0f, 0);
+    Vector3 m_GroundNormal = new Vector3(0, 1.0f, 0);
     public float GroundResolutionOverlap = 0.05f;
 
     public bool InstantStepUp = false;
@@ -28,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     float InAirMoveAccel = 10.0f;
     float InAirMaxHorizSpeed = 15.0f;
-    float InAirMaxVertSpeed = 50.0f;
+    float InAirMaxVertSpeed = 15.0f;
     float m_TimeInAir;
 
     float m_TimeLeftToAllowMidAirJump;
@@ -99,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
     void UpdateGroundMovement()
     {
         if (m_LocalDirection.sqrMagnitude > MathUtils.CompareEpsilon)
-        { 
+        {
             Vector3 localVelocity = m_Velocity; // Not accounting for ground movement
 
             Vector3 worldDirection = Vector3.zero;
@@ -150,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             //Slow to a stop
-            m_Velocity = MathUtils.LerpTo(1000.0f, m_Velocity, m_GroundVelocity, Time.fixedDeltaTime);
+            m_Velocity = MathUtils.LerpTo(1000.0f, m_Velocity, m_GroundVelocity, Time.deltaTime);
         }
 
         //Handle jump input
@@ -208,13 +207,13 @@ public class PlayerMovement : MonoBehaviour
 
             m_Velocity += worldDirection * Time.fixedDeltaTime;
 
-            // Clamp velocity
-            m_Velocity = MathUtils.HorizontalClamp(m_Velocity, InAirMaxHorizSpeed);
-
-            m_Velocity.y = Mathf.Clamp(m_Velocity.y, -InAirMaxVertSpeed, InAirMaxVertSpeed);
         }
 
-        // Still need to account for how long the button is held and a max as well.
+        // Clamp velocity
+        m_Velocity = MathUtils.HorizontalClamp(m_Velocity, InAirMaxHorizSpeed);
+
+        m_Velocity.y = Mathf.Clamp(m_Velocity.y, -InAirMaxVertSpeed, InAirMaxVertSpeed);
+
         //Update mid air jump timer and related jump.  This timer is to make jump timing a little more forgiving 
         //by letting you still jump a short time after falling off a ledge.
         if (m_JumpTimeLeft <= 0.0f)
@@ -278,18 +277,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-   
+
     void CheckOnGroundState()
     {
         // Check if on ground or not
-        
+
         // Sphere cast down
 
         float halfCapsuleHeight = m_Collider.height * 0.5f;
 
         Vector3 rayStart = transform.position;
         rayStart.y += GroundCheckStartOffsetY;
-        
+
         Vector3 rayDirection = Vector3.down;
 
         float rayDistance = halfCapsuleHeight + GroundCheckStartOffsetY - CheckForGroundRadius;
