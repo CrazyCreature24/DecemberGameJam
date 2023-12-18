@@ -60,11 +60,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\PlayerPowerManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\UI\UIMainMenu.cs" />
     <Compile Include="Assets\Scripts\Math\MathUtils.cs" />
-    <Compile Include="Assets\Scripts\BatteryPowerup.cs" />
     <Compile Include="Assets\Scripts\Level\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Camera\FirstPersonCamera.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Powerups\BatteryPowerup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
