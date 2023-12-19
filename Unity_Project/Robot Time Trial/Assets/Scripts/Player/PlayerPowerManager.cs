@@ -15,18 +15,11 @@ public class PlayerPowerManager : MonoBehaviour
     PlayerMovement m_MovementReference;
     public GameObject m_LevelManager;
 
-    public Scrollbar m_ScrollBar;
-    public TMP_Text m_BarText;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        
-
         m_MovementReference = GetComponent<PlayerMovement>();
-
-
 
         m_CurrentPower = m_MaxPower;
     }
@@ -61,10 +54,6 @@ public class PlayerPowerManager : MonoBehaviour
         {
             m_CurrentPower = m_MaxPower;
         }
-
-
-        m_ScrollBar.size = m_CurrentPower;
-        m_BarText.text = (m_CurrentPower * 100).ToString() + "%";
 
     }
 

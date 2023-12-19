@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public float m_LevelTime = 30.0f;
+    public float m_CurrentTime = 30.0f;
+
     public GameObject m_BatteryPrefab;
     GameObject[] m_BatteryLocations;
 
@@ -18,16 +21,19 @@ public class LevelManager : MonoBehaviour
 
         SpawnBatteries();
 
+        m_CurrentTime = m_LevelTime;
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        HandleLevelTimer();
     }
 
     public void Respawn()
     {
+        // This calls respawn on all object with the interface. This helps centralize everything into one place. Player Movement shows an example.
         IRespawn[] respawns = FindObjectsOfType<MonoBehaviour>(true).OfType<IRespawn>().ToArray();
 
         foreach (var respawn in respawns)
@@ -49,5 +55,23 @@ public class LevelManager : MonoBehaviour
                 indicator.SpawnBattery(m_BatteryPrefab);
             }
         }
+    }
+
+    public void HandleLevelTimer()
+    {
+        if (m_CurrentTime > 0.0f)
+        {
+            m_CurrentTime -= Time.fixedDeltaTime;
+        }
+        else if (m_CurrentTime <= 0.0f)
+        {
+            m_CurrentTime = 0;
+        }
+
+    }
+
+    public void ResetTime()
+    {
+        m_CurrentTime = m_LevelTime;
     }
 }
