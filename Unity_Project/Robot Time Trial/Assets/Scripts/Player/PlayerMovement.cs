@@ -47,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 m_SpawnPosition = Vector3.zero;
 
+    public GameObject m_LevelManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -374,6 +376,10 @@ public class PlayerMovement : MonoBehaviour
         {
             m_PowerManager.m_CurrentPower = m_PowerManager.m_MaxPower;
         }
+
+        LevelManager levelManager = m_LevelManager.GetComponent<LevelManager>();
+
+        levelManager.SpawnBatteries();
     }
 
     enum MovementState

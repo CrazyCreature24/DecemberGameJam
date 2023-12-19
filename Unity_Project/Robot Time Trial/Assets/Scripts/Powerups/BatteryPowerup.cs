@@ -52,7 +52,7 @@ public class BatteryPowerup : MonoBehaviour
 
                 powerManager.m_CurrentPower += m_PickupPowerIncrease;
 
-                GameObject.Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
