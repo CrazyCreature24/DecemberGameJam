@@ -9,15 +9,28 @@ public class Turret : MonoBehaviour
     public float rotationSpeed = 1.0f;
     public float ActivationRange = 40.0f;
 
+    float AlertRange;
+
     float TimeAfterLastFire = 0.0f;
     GameObject Player;
     [SerializeField]
     GameObject Muzzle;
+    [SerializeField]
+    GameObject Base;
+
+    [SerializeField]
+    Material Mat_Default;
+    [SerializeField]
+    Material Mat_Alert;
+    [SerializeField]
+    Material Mat_Firing;
 
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        Base.GetComponent<MeshRenderer>().material = Mat_Default;
+        AlertRange = ActivationRange + 10.0f;
     }
 
     void FixedUpdate()
@@ -31,6 +44,7 @@ public class Turret : MonoBehaviour
 
         if (distanceFromPlayer < ActivationRange)
         {
+            Base.GetComponent<MeshRenderer>().material = Mat_Firing;
             Quaternion rot = Quaternion.LookRotation(directionTowardsPlayer);
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * rotationSpeed);
 
@@ -45,6 +59,14 @@ public class Turret : MonoBehaviour
                 }
             }
         }
+        else if (distanceFromPlayer < AlertRange)
+        {
+            Base.GetComponent<MeshRenderer>().material = Mat_Alert;
+            Quaternion rot = Quaternion.LookRotation(directionTowardsPlayer);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * rotationSpeed);
+        }
+        else
+            Base.GetComponent<MeshRenderer>().material = Mat_Default;
     }
 
     // Update is called once per frame

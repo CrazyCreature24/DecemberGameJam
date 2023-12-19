@@ -6,6 +6,7 @@ public class TurretOrb : MonoBehaviour
 {
     public float LifeTime = 10.0f;
     public float Speed = 20.0f;
+    public float Damage = 0.1f;
 
     Vector3 Velocity = Vector3.zero;
     float currentLifeTime;
@@ -33,8 +34,11 @@ public class TurretOrb : MonoBehaviour
     {
         if (collision.gameObject)
         {
+            if(collision.gameObject.CompareTag("Player"))
+            {
+                collision.gameObject.GetComponent<PlayerPowerManager>().TakePowerDamage(Damage);
+            }
             this.gameObject.SetActive(false);
-            Debug.Log("Collision");
         }
     }
 }

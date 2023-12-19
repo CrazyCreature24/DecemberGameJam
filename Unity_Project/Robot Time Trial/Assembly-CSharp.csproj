@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Enemy\Turret.cs" />
     <Compile Include="Assets\Scripts\Level\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Camera\FirstPersonCamera.cs" />
+    <Compile Include="Assets\Scripts\Enemy\ElectroMagnet.cs" />
     <Compile Include="Assets\Scripts\Projectiles\TurretOrb.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Powerups\BatteryPowerup.cs" />

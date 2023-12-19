@@ -76,4 +76,9 @@ public class PlayerPowerManager : MonoBehaviour
 
         return isMoving;
     }
+
+    public void TakePowerDamage(float damage)
+    {
+        m_CurrentPower -= damage;
+    }
 }

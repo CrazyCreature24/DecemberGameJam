@@ -261,9 +261,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 1490952518402947777, guid: 98bd848e8bc7abc4b873a12be3f0cab0, type: 3}
   FireRate: 5
-  rotationSpeed: 1
+  rotationSpeed: 2.5
   ActivationRange: 40
   Muzzle: {fileID: 6370704935872111775}
+  Base: {fileID: 1600296231245630256}
+  Mat_Default: {fileID: 2100000, guid: 78a14a09b2c95fc42bff680ddb55cc4a, type: 2}
+  Mat_Alert: {fileID: 2100000, guid: 3caeaa35f6b68c243b2bf0a64279e7a6, type: 2}
+  Mat_Firing: {fileID: 2100000, guid: 0f53fed03e6b2d548944be8ab40e7733, type: 2}
 --- !u!1 &6370704935872111775
 GameObject:
   m_ObjectHideFlags: 0
