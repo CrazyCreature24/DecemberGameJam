@@ -1219,6 +1219,10 @@ PrefabInstance:
       propertyPath: m_ScrollBar
       value: 
       objectReference: {fileID: 109547891}
+    - target: {fileID: 7175828672989174237, guid: ff19f9a7542c61647ab55159f8b5603d, type: 3}
+      propertyPath: m_LevelManager
+      value: 
+      objectReference: {fileID: 1823373108}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

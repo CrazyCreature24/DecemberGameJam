@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IRespawn
 {
     Vector3 m_LocalDirection;
     public float m_Speed;
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 m_SpawnPosition = Vector3.zero;
 
-    public GameObject m_LevelManager;
+    
 
 
     // Start is called before the first frame update
@@ -305,7 +305,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 rayDirection = Vector3.down;
 
-        float rayDistance = halfCapsuleHeight + GroundCheckStartOffsetY - CheckForGroundRadius;
+        float rayDistance = halfCapsuleHeight + GroundCheckStartOffsetY - CheckForGroundRadius * 0.5f;
 
         RaycastHit[] hitInfos = Physics.SphereCastAll(rayStart, CheckForGroundRadius, rayDirection, rayDistance, m_GroundCheckMask);
 
@@ -376,10 +376,6 @@ public class PlayerMovement : MonoBehaviour
         {
             m_PowerManager.m_CurrentPower = m_PowerManager.m_MaxPower;
         }
-
-        LevelManager levelManager = m_LevelManager.GetComponent<LevelManager>();
-
-        levelManager.SpawnBatteries();
     }
 
     enum MovementState

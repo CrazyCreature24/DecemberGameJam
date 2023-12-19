@@ -300,5 +300,6 @@ MonoBehaviour:
   m_IsMoving: 0
   m_PowerDepletionMultiplier: 0.1
   m_PowerIncreaseMultiplier: 0.2
+  m_LevelManager: {fileID: 0}
   m_ScrollBar: {fileID: 0}
   m_BarText: {fileID: 0}

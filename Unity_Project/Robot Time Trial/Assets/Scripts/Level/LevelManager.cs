@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -25,14 +26,28 @@ public class LevelManager : MonoBehaviour
         
     }
 
+    public void Respawn()
+    {
+        IRespawn[] respawns = FindObjectsOfType<MonoBehaviour>(true).OfType<IRespawn>().ToArray();
+
+        foreach (var respawn in respawns)
+        {
+            respawn.Respawn();
+        }
+
+        SpawnBatteries();
+    }
 
     public void SpawnBatteries()
     {
         foreach(GameObject obj in m_BatteryLocations)
         {
-            GameObject newGO = PoolManager.Get(m_BatteryPrefab);
-            newGO.transform.position = obj.transform.position;
+            BatterySpawnIndicator indicator = obj.GetComponent<BatterySpawnIndicator>();
 
+            if (indicator != null)
+            {
+                indicator.SpawnBattery(m_BatteryPrefab);
+            }
         }
     }
 }

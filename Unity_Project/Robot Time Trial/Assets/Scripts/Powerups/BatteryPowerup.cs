@@ -12,6 +12,8 @@ public class BatteryPowerup : MonoBehaviour
 
     public float m_PickupPowerIncrease = 0.3f;
 
+    public BatterySpawnIndicator m_SpawnIndicator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,9 @@ public class BatteryPowerup : MonoBehaviour
                 powerManager.m_CurrentPower += m_PickupPowerIncrease;
 
                 gameObject.SetActive(false);
+
+                m_SpawnIndicator.SetIsActivePowerup(false);
+                m_SpawnIndicator = null;
             }
         }
     }

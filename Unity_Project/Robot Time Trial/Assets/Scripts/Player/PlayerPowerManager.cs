@@ -13,6 +13,7 @@ public class PlayerPowerManager : MonoBehaviour
     public float m_PowerIncreaseMultiplier = 0.2f;
 
     PlayerMovement m_MovementReference;
+    public GameObject m_LevelManager;
 
     public Scrollbar m_ScrollBar;
     public TMP_Text m_BarText;
@@ -21,7 +22,11 @@ public class PlayerPowerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         m_MovementReference = GetComponent<PlayerMovement>();
+
+
 
         m_CurrentPower = m_MaxPower;
     }
@@ -34,24 +39,28 @@ public class PlayerPowerManager : MonoBehaviour
         if (m_IsMoving == true && m_CurrentPower > 0.0f)
         {
             m_CurrentPower -= Time.fixedDeltaTime * m_PowerDepletionMultiplier;
-
-            if  (m_CurrentPower <= 0.0f)
-            {
-                m_CurrentPower = 0.0f;
-                m_MovementReference.Respawn();
-            }
-
         }
         else if (m_IsMoving == false && m_CurrentPower < m_MaxPower)
         {
             m_CurrentPower += Time.fixedDeltaTime * m_PowerIncreaseMultiplier;
+        }
 
-            if (m_CurrentPower > m_MaxPower)
+        if (m_CurrentPower <= 0.0f)
+        {
+            m_CurrentPower = 0.0f;
+
+            LevelManager levelManager = m_LevelManager.GetComponent<LevelManager>();
+
+            if (levelManager != null)
             {
-                m_CurrentPower = m_MaxPower;
+                levelManager.Respawn();
             }
         }
 
+        if (m_CurrentPower > m_MaxPower)
+        {
+            m_CurrentPower = m_MaxPower;
+        }
 
 
         m_ScrollBar.size = m_CurrentPower;
