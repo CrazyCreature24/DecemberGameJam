@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Powerups\BatterySpawnIndicator.cs" />
     <Compile Include="Assets\Scripts\Math\MathUtils.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IRespawn.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Laser_Emitter.cs" />
     <Compile Include="Assets\Scripts\Enemy\KamikazeDrone.cs" />
     <Compile Include="Assets\Scripts\Enemy\Turret.cs" />
     <Compile Include="Assets\Scripts\UI\UIHud.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Scripts\Projectiles\TurretOrb.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Powerups\BatteryPowerup.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Laser_Move.cs" />
     <Compile Include="Assets\Scripts\Object Pooling\PoolManager.cs" />
   </ItemGroup>
   <ItemGroup>

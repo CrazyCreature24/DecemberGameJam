@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349.3334
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 84
+  controlID: 108
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
-  m_Stats: 0
+  m_Stats: 1
   m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -413,7 +413,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 8025ffffac26ffff
+      m_ExpandedIDs: 2625ffffac26ffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -780,9 +780,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -43.323948, y: -5.455551, z: 28.183182}
+    m_Target: {x: 3.4046726, y: 21.811209, z: 38.966057}
     speed: 2
-    m_Value: {x: -43.323948, y: -5.455551, z: 28.183182}
+    m_Value: {x: 3.4046726, y: 21.811209, z: 38.966057}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -828,9 +828,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.055277042, y: -0.15695107, z: 0.0088265315, w: 0.98614687}
+    m_Target: {x: 0.07420115, y: -0.082778685, z: -0.005988808, w: -0.9939323}
     speed: 2
-    m_Value: {x: 0.055270057, y: -0.15693124, z: 0.008825417, w: 0.9860223}
+    m_Value: {x: 0.074199095, y: -0.081275694, z: -0.0058766315, w: -0.9939086}
   m_Size:
     m_Target: 55.903934
     speed: 2
@@ -904,7 +904,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Spawner
+    - Assets/Art/Materials
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -912,7 +912,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Spawner
+  - Assets/Art/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Projects\Game jam\DecemberGameJam\Unity_Project\Robot Time
     Trial
@@ -920,9 +920,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6a070000
-    m_LastClickedID: 1898
-    m_ExpandedIDs: 00000000ee05000000ca9a3bffffff7f
+    m_SelectedIDs: 3e070000
+    m_LastClickedID: 1854
+    m_ExpandedIDs: 00000000ee0500007e060000a206000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

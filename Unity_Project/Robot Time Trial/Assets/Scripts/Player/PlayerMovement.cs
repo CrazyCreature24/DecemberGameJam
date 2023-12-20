@@ -371,6 +371,7 @@ public class PlayerMovement : MonoBehaviour, IRespawn
     public void Respawn()
     {
         transform.position = m_SpawnPosition;
+        m_Velocity = Vector3.zero;
 
         if (m_PowerManager != null)
         {
