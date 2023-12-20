@@ -668,11 +668,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 749268409630341396, guid: 7f0142d13b7f9da49b4cbaed3d1d7817, type: 3}
       propertyPath: NumOfObjects
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 749268409630341396, guid: 7f0142d13b7f9da49b4cbaed3d1d7817, type: 3}
       propertyPath: ActivationRange
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 749268409630341396, guid: 7f0142d13b7f9da49b4cbaed3d1d7817, type: 3}
+      propertyPath: DelayBetweenSpawn
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 749268409630341396, guid: 7f0142d13b7f9da49b4cbaed3d1d7817, type: 3}
       propertyPath: ActivateWhenPlayerInRange
