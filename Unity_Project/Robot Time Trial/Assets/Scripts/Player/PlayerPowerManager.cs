@@ -11,10 +11,14 @@ public class PlayerPowerManager : MonoBehaviour
     public bool m_IsMoving = false;
     public float m_PowerDepletionMultiplier = 0.1f;
     public float m_PowerIncreaseMultiplier = 0.2f;
+    public ParticleSystem ShieldFX;
 
     PlayerMovement m_MovementReference;
     public GameObject m_LevelManager;
 
+    bool bIsShieldActive = false;
+    float ShieldTimer = 0.0f;
+    float DamageReduction = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,25 @@ public class PlayerPowerManager : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
+    {
+        UpdateMovementPower();
+
+        if (bIsShieldActive)
+        {
+            if(!ShieldFX.isPlaying)
+                ShieldFX.Play();
+            ShieldTimer -= Time.fixedDeltaTime;
+            if (ShieldTimer <= 0.0f)
+            {
+                ShieldTimer = 0.0f;
+                bIsShieldActive = false;
+            }
+        }
+        else
+            ShieldFX.Stop(true);
+    }
+
+    private void UpdateMovementPower()
     {
         m_IsMoving = CheckIsMoving();
 
@@ -54,7 +77,6 @@ public class PlayerPowerManager : MonoBehaviour
         {
             m_CurrentPower = m_MaxPower;
         }
-
     }
 
     public bool CheckIsMoving()
@@ -75,8 +97,19 @@ public class PlayerPowerManager : MonoBehaviour
         return isMoving;
     }
 
+    public void ActivateShield(float shieldTimer, float damageReduction)
+    {
+        bIsShieldActive = true;
+        ShieldTimer = shieldTimer;
+        DamageReduction = damageReduction;
+    }
+
     public void TakePowerDamage(float damage)
     {
+        if(bIsShieldActive)
+        {
+            damage -= damage * DamageReduction;
+        }
         m_CurrentPower -= damage;
     }
 }
