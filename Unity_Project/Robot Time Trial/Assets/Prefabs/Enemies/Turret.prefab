@@ -262,7 +262,7 @@ MonoBehaviour:
   Projectile: {fileID: 1490952518402947777, guid: 98bd848e8bc7abc4b873a12be3f0cab0, type: 3}
   FireRate: 5
   rotationSpeed: 2.5
-  ActivationRange: 40
+  ActivationRange: 20
   Muzzle: {fileID: 6370704935872111775}
   Base: {fileID: 1600296231245630256}
   Mat_Default: {fileID: 2100000, guid: 78a14a09b2c95fc42bff680ddb55cc4a, type: 2}

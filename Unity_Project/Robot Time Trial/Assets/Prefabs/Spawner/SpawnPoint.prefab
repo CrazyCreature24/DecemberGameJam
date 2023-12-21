@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnLocation: {fileID: 1367198463473916099}
-  ObjectToSpawn: {fileID: 8282241632191124884, guid: 3848e42b371f2b444aea10ae37298f11, type: 3}
+  ObjectToSpawn: {fileID: 3736490243127724195, guid: 906cd1ba0ce1484488fbefa608c1e812, type: 3}
   ActivateWhenPlayerInRange: 1
   ActivationRange: 50
   StartDelayAfterActivation: 0
