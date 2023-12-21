@@ -184,17 +184,18 @@ public class PlayerMovement : MonoBehaviour, IRespawn
         //Ease the height up to the step up height
         Vector3 playerCenter = transform.position;
 
+
+        // TODO: Uncommenting this code causes the player to jitter when they fall off unstable mesh. Fix before putting back in.
         if (InstantStepUp) //Adjust capsule vertical position instantly, depending on raycast returned surface
         {
-            playerCenter.y = m_CenterHeight;
+            //playerCenter.y = m_CenterHeight;
         }
         else
         {
-            playerCenter.y = MathUtils.LerpTo(StepUpEaseSpeed, playerCenter.y, m_CenterHeight, Time.fixedDeltaTime);
+            //playerCenter.y = MathUtils.LerpTo(StepUpEaseSpeed, playerCenter.y, m_CenterHeight, Time.fixedDeltaTime);
         }
 
         transform.position = playerCenter;
-        transform.position += new Vector3(0, 0.1f, 0);
 
         //Reset time in air
         m_TimeInAir = 0.0f;

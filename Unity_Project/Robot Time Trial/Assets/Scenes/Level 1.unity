@@ -4070,6 +4070,10 @@ PrefabInstance:
       value: ElectroMagnet (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7652165682658431700, guid: e4d01ff02a825de44919a41d757e668a, type: 3}
+      propertyPath: MagnetForce
+      value: 12.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7652165682658431700, guid: e4d01ff02a825de44919a41d757e668a, type: 3}
       propertyPath: ActivationRange
       value: 16.98
       objectReference: {fileID: 0}
