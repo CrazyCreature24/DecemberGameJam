@@ -13,6 +13,9 @@ public class UIMainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
         if (m_PlayButton != null)
         {
             m_PlayButton.onClick.AddListener(Play);
@@ -32,7 +35,7 @@ public class UIMainMenu : MonoBehaviour
 
     void Play()
     {
-        SceneManager.LoadScene("Test Level",LoadSceneMode.Single);
+        SceneManager.LoadScene("Level 1",LoadSceneMode.Single);
     }
 
     private void Exit()

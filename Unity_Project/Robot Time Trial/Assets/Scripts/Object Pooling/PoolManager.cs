@@ -10,7 +10,7 @@ public class PoolManager : MonoBehaviour
     public int SecondsStaleBeforeCleanup = 500;
     void Start()
     {
-        m_SecondsPoolRefreshRate = 15;
+        //m_SecondsPoolRefreshRate = 15;
 
         if (CleanUpStaleObjects)
             StartCoroutine(CleanPools());
@@ -62,7 +62,7 @@ public class PoolManager : MonoBehaviour
     }
 
 
-    private IEnumerator CleanPools()
+    public static IEnumerator CleanPools()
     {
         while (true)
         {
@@ -70,7 +70,7 @@ public class PoolManager : MonoBehaviour
 
             foreach (ObjectPool pool in m_Pools)
             {
-                if (pool.lastUsed + SecondsStaleBeforeCleanup < Time.timeSinceLevelLoad)
+                if (pool.lastUsed + 0.000000001f < Time.timeSinceLevelLoad)
                 {
                     pool.RemoveDisabledObjects();
                     if (pool.ObjectCount < 1)
@@ -81,10 +81,10 @@ public class PoolManager : MonoBehaviour
             }
             poolsToDelete.ForEach(x => m_Pools.Remove(x));
 
-            yield return new WaitForSeconds(m_SecondsPoolRefreshRate);
+            yield return new WaitForSeconds(0.00001f);
         }
     }
 
-    float m_SecondsPoolRefreshRate;
+    //float m_SecondsPoolRefreshRate;
     static List<ObjectPool> m_Pools = new List<ObjectPool>();
 }

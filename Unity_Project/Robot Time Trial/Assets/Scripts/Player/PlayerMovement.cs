@@ -18,14 +18,14 @@ public class PlayerMovement : MonoBehaviour, IRespawn
     public float CheckForGroundRadius = 0.5f;
     int m_GroundCheckMask;
     Vector3 m_GroundNormal = new Vector3(0, 1.0f, 0);
-    public float GroundResolutionOverlap = 0.1f;
+    public float GroundResolutionOverlap = 0.001f;
 
     public bool InstantStepUp = false;
     public float StepUpEaseSpeed = 10.0f;
-    public float MinAllowedSurfaceAngle = 15.0f;
+    public float MinAllowedSurfaceAngle = 45.0f;
     float m_CenterHeight;
 
-    float InAirMoveAccel = 10.0f;
+    float InAirMoveAccel = 20.0f;
     float InAirMaxHorizSpeed = 15.0f;
     float InAirMaxVertSpeed = 15.0f;
     float m_TimeInAir;
@@ -165,7 +165,7 @@ public class PlayerMovement : MonoBehaviour, IRespawn
         else
         {
             //Slow to a stop
-            m_Velocity = MathUtils.LerpTo(1000.0f, m_Velocity, m_GroundVelocity, Time.deltaTime);
+            m_Velocity = MathUtils.LerpTo(1000.0f, m_Velocity, m_GroundVelocity, Time.fixedDeltaTime);
         }
 
         //Handle jump input
@@ -190,7 +190,7 @@ public class PlayerMovement : MonoBehaviour, IRespawn
         }
         else
         {
-            playerCenter.y = MathUtils.LerpTo(StepUpEaseSpeed, playerCenter.y, m_CenterHeight, Time.deltaTime);
+            playerCenter.y = MathUtils.LerpTo(StepUpEaseSpeed, playerCenter.y, m_CenterHeight, Time.fixedDeltaTime);
         }
 
         transform.position = playerCenter;
@@ -308,7 +308,7 @@ public class PlayerMovement : MonoBehaviour, IRespawn
 
         Vector3 rayDirection = Vector3.down;
 
-        float rayDistance = halfCapsuleHeight + GroundCheckStartOffsetY - CheckForGroundRadius * 0.5f;
+        float rayDistance = halfCapsuleHeight + GroundCheckStartOffsetY - CheckForGroundRadius * 0.3f;
 
         RaycastHit[] hitInfos = Physics.SphereCastAll(rayStart, CheckForGroundRadius, rayDirection, rayDistance, m_GroundCheckMask);
 
