@@ -136,6 +136,37 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &2991519317875353175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3658225137781228056}
+  m_Layer: 0
+  m_Name: Lightning Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3658225137781228056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991519317875353175}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.982, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3774934659342169082}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6647089635743238908
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +204,7 @@ Transform:
   - {fileID: 1995843166410535316}
   - {fileID: 8805493409350439178}
   - {fileID: 3626686365961843188}
+  - {fileID: 3658225137781228056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6438636724367503297
@@ -245,7 +277,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 2.37
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &7652165682658431700
@@ -262,6 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LRObject1: {fileID: 576406076043052400}
   LRObject2: {fileID: 7517999302987828883}
+  OriginPoint: {fileID: 2991519317875353175}
   ActivationRange: 10
   MagnetForce: 7
   LR1PointDistance: 2.19
@@ -443,7 +476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f36eebf07ccbf0a44b3c69083dfcc415, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.95
+      value: -1.135
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f36eebf07ccbf0a44b3c69083dfcc415, type: 3}
       propertyPath: m_LocalPosition.z

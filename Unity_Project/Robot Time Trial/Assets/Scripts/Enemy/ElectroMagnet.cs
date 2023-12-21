@@ -18,6 +18,8 @@ public class ElectroMagnet : MonoBehaviour
     GameObject LRObject1;
     [SerializeField]
     GameObject LRObject2;
+    [SerializeField]
+    GameObject OriginPoint;
 
     [Header("Stats")]
     [Range(5.0f, 20.0f)]
@@ -59,8 +61,7 @@ public class ElectroMagnet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 direction = Player.transform.position - this.transform.position;
-        float distanceFromPlayer = direction.magnitude;
+        Vector3 direction = Player.transform.position - OriginPoint.transform.position;
 
         if (bIsAttacking)
         {
@@ -79,7 +80,7 @@ public class ElectroMagnet : MonoBehaviour
                 Vector3 LR1Direction = direction / LR1Segments;
                 for (int i = 0; i < LR1Segments; i++)
                 {
-                    Vector3 pos = this.transform.position + LR1Direction * i + Random.insideUnitSphere * LR1PointDistance;
+                    Vector3 pos = OriginPoint.transform.position + LR1Direction * i + Random.insideUnitSphere * LR1PointDistance;
                     LR1.SetPosition(i, pos);
                 }
                 LR1.startWidth = LR1Width;
@@ -101,7 +102,7 @@ public class ElectroMagnet : MonoBehaviour
                 Vector3 LR2Direction = direction / LR2Segments;
                 for (int i = 0; i < LR2Segments; i++)
                 {
-                    Vector3 pos = this.transform.position + LR2Direction * i + Random.insideUnitSphere * LR2PointDistance;
+                    Vector3 pos = OriginPoint.transform.position + LR2Direction * i + Random.insideUnitSphere * LR2PointDistance;
                     LR2.SetPosition(i, pos);
                 }
                 LR2.startWidth = LR2Width;
@@ -125,7 +126,7 @@ public class ElectroMagnet : MonoBehaviour
             directionTowardsEnemy.Normalize();
             // distperc = x/100 * activationrange;  x = distperc/activationrange * 100
             float inverseScale = distanceFromPlayer / ActivationRange;
-            MagnetForceScaling = 1 - inverseScale;
+            MagnetForceScaling = 1.0f - inverseScale;
             //Mathf.Clamp(MagnetForceScaling, 0.0f, 1.0f);
             float forceToApply = MagnetForce * MagnetForceScaling;
             Player.transform.position += directionTowardsEnemy * forceToApply * Time.deltaTime;
