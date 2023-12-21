@@ -14,9 +14,17 @@ public class KamikazeDrone : MonoBehaviour
     float ExplosionTimer = 1.0f;
     [SerializeField]
     ParticleSystem ExplosionParticleEffect = null;
+    [SerializeField]
+    [Range(1.0f, 15.0f)]
+    float DamageRadius = 5.0f;
+    [SerializeField]
+    [Tooltip("Percentage of battery damage done to the player")]
+    [Range(0.0f, 1.0f)]
+    float DamagePercentage = 0.4f;
 
     private Rigidbody rigidBody;
     GameObject Player;
+
     enum State
     {
         Moving = 0,
@@ -66,17 +74,30 @@ public class KamikazeDrone : MonoBehaviour
             ElapsedTime += Time.deltaTime;
             if(ElapsedTime >= ExplosionTimer)
             {
-                GameObject vfx = PoolManager.Get(ExplosionParticleEffect.gameObject, transform.position, transform.rotation);
-                vfx.GetComponent<SimpleVFX>().Init();
-                gameObject.SetActive(false);
+                Explosion();
             }
         }
     }
 
     bool HasLanded()
     {
+        //BoxCollider collider = GetComponent<BoxCollider>();
+        //Vector3 rayStart = collider.bounds.center;
+        ////float rayDistance = GetComponent<CapsuleCollider>().height * 0.5f;
+        //float rayDistance = collider.bounds.extents.y;
+
+        ////int layerMask = ~LayerMask.GetMask("Player", "Ignore Raycast", "Enemy");
+        //RaycastHit hit;
+        ////Physics.SphereCast(rayStart, collider.bounds.extents.z, Vector3.down, out hit, rayDistance);
+        //bool isHit = Physics.Raycast(rayStart, Vector3.down, out hit, rayDistance);
+        //if (isHit)
+        //{
+        //    int flag = 1;
+        //}
+        //return isHit;
+
         Vector3 rayStart = transform.position;
-        float rayDistance = GetComponent<CapsuleCollider>().height * 0.5f;
+        float rayDistance = (GetComponent<CapsuleCollider>().height * 0.5f) - GetComponent<CapsuleCollider>().radius + 0.01f;
 
         int layerMask = ~LayerMask.GetMask("Player", "Ignore Raycast", "Enemy");
         RaycastHit hit;
@@ -91,5 +112,28 @@ public class KamikazeDrone : MonoBehaviour
         {
             state = State.Exploding;
         }
+    }
+
+    private void Explosion()
+    {
+        GameObject vfx = PoolManager.Get(ExplosionParticleEffect.gameObject, transform.position, transform.rotation);
+        vfx.GetComponent<SimpleVFX>().Init();
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, DamageRadius);
+        foreach(Collider collider in colliders)
+        {
+            if(collider.gameObject.CompareTag("Player"))
+            {
+                Vector3 directionTowardsPlayer = this.GetComponent<CapsuleCollider>().bounds.center - collider.gameObject.transform.position;
+                float distanceFromPlayer = directionTowardsPlayer.magnitude;
+                float inverseScale = distanceFromPlayer / DamageRadius;
+                float damageScale = 1.0f - inverseScale;
+                float damageToApply = DamagePercentage * damageScale;
+                collider.gameObject.GetComponent<PlayerPowerManager>().TakePowerDamage(damageToApply);
+                break;
+            }
+        }
+        state = State.Spawning;
+        gameObject.SetActive(false);
     }
 }

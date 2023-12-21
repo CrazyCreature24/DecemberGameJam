@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1018769335768039917}
   - component: {fileID: 5210489017240857565}
-  - component: {fileID: -5221354739568357444}
   - component: {fileID: 5867222717527407102}
   - component: {fileID: 2071694035878682723}
+  - component: {fileID: 4254368338993630709}
   m_Layer: 0
   m_Name: Kamikaze_Drone
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3736490243127724195}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.525, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -52,29 +52,8 @@ MonoBehaviour:
   RotationSpeed: 4
   ExplosionTimer: 1
   ExplosionParticleEffect: {fileID: 5416663213370308149, guid: fc9d1c746749e4f439623ac7cc2cc1c6, type: 3}
---- !u!136 &-5221354739568357444
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3736490243127724195}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.36, z: 0}
+  DamageRadius: 7
+  DamagePercentage: 0.5
 --- !u!54 &5867222717527407102
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,7 +100,30 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.1
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0.35, z: 0}
+--- !u!136 &4254368338993630709
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3736490243127724195}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1860510803960077693
 PrefabInstance:
@@ -149,7 +151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62c928eb4cce258428166ae7b9ec30e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.419
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62c928eb4cce258428166ae7b9ec30e3, type: 3}
       propertyPath: m_LocalPosition.z
