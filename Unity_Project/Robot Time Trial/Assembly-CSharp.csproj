@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Camera\FirstPersonCamera.cs" />
     <Compile Include="Assets\Scripts\Enemy\ElectroMagnet.cs" />
     <Compile Include="Assets\Scripts\Projectiles\TurretOrb.cs" />
+    <Compile Include="Assets\Scripts\VFX\SimpleVFX.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Powerups\BatteryPowerup.cs" />
     <Compile Include="Assets\Scripts\Enemy\Laser_Move.cs" />

@@ -110,7 +110,8 @@ public class KamikazeSpawner : MonoBehaviour
 
     private void SpawnObject()
     {
-        GameObject obj = PoolManager.Get(ObjectToSpawn.gameObject, SpawnLocation.transform.position, Quaternion.identity);
+        GameObject obj = PoolManager.Get(ObjectToSpawn.gameObject, SpawnLocation.transform.position, SpawnLocation.transform.rotation);
+        obj.GetComponent<KamikazeDrone>().Init();
         numSpawned++;
     }
 }

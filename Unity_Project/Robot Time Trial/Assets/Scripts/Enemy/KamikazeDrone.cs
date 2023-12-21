@@ -1,42 +1,76 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class KamikazeDrone : MonoBehaviour
 {
     [Header("Stats")]
-    public float moveSpeed = 5.0f;
-    public float maxDistFromWall = 7.0f;
-    public LayerMask doNotCollide;
+    [SerializeField]
+    float moveSpeed = 5.0f;
+    [SerializeField]
+    float RotationSpeed = 4.0f;
+    [SerializeField]
+    float ExplosionTimer = 1.0f;
+    [SerializeField]
+    ParticleSystem ExplosionParticleEffect = null;
 
-
-    bool bSpawnComplete;
     private Rigidbody rigidBody;
     GameObject Player;
-
+    enum State
+    {
+        Moving = 0,
+        Exploding = 1,
+        Spawning = 2,
+    };
+    State state = State.Spawning;
+    float ElapsedTime = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
-        bSpawnComplete = false;
+        state = State.Spawning;
         rigidBody = GetComponent<Rigidbody>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        ElapsedTime = 0.0f;
+    }
+
+    public void Init()
+    {
+        state = State.Spawning;
+        ElapsedTime = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!bSpawnComplete)
+        if (state == State.Spawning)
         {
             if (HasLanded())
-                bSpawnComplete = true;
+                state = State.Moving;
             return;
         }
 
-        Vector3 direction = Player.transform.position - transform.position;
-        direction.Normalize();
-        direction.y = 0.0f;
-        transform.rotation = Quaternion.LookRotation(direction);
-        rigidBody.velocity = direction * moveSpeed;
+        if (state == State.Moving)
+        {
+            Vector3 direction = Player.transform.position - transform.position;
+            direction.Normalize();
+            direction.y = 0.0f;
+            Quaternion rot = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, RotationSpeed * Time.deltaTime);
+            rigidBody.velocity = transform.forward * moveSpeed;
+        }
+
+        if(state == State.Exploding)
+        {
+            rigidBody.velocity = Vector3.zero;
+            ElapsedTime += Time.deltaTime;
+            if(ElapsedTime >= ExplosionTimer)
+            {
+                GameObject vfx = PoolManager.Get(ExplosionParticleEffect.gameObject, transform.position, transform.rotation);
+                vfx.GetComponent<SimpleVFX>().Init();
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     bool HasLanded()
@@ -49,5 +83,13 @@ public class KamikazeDrone : MonoBehaviour
         bool isHit = Physics.SphereCast(rayStart, GetComponent<CapsuleCollider>().radius, Vector3.down, out hit, rayDistance, layerMask);
 
         return isHit;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            state = State.Exploding;
+        }
     }
 }
