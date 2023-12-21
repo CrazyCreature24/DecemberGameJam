@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour, IRespawn
     public float CheckForGroundRadius = 0.5f;
     int m_GroundCheckMask;
     Vector3 m_GroundNormal = new Vector3(0, 1.0f, 0);
-    public float GroundResolutionOverlap = 0.05f;
+    public float GroundResolutionOverlap = 0.1f;
 
     public bool InstantStepUp = false;
     public float StepUpEaseSpeed = 10.0f;
@@ -77,13 +77,15 @@ public class PlayerMovement : MonoBehaviour, IRespawn
     void Update()
     {
         // Currently does nothing
+
+        m_Controller.UpdateCanMouseControl();
+
+        
     }
 
     void FixedUpdate()
     {
         m_Velocity = m_RigidBody.velocity;
-
-        m_Controller.UpdateCanMouseControl();
 
         m_LocalDirection = m_Controller.GetMoveInput();
 
@@ -192,6 +194,7 @@ public class PlayerMovement : MonoBehaviour, IRespawn
         }
 
         transform.position = playerCenter;
+        transform.position += new Vector3(0, 0.1f, 0);
 
         //Reset time in air
         m_TimeInAir = 0.0f;
