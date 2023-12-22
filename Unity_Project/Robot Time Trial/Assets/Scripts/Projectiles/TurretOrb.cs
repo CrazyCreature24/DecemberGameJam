@@ -38,7 +38,27 @@ public class TurretOrb : MonoBehaviour
             {
                 collision.gameObject.GetComponent<PlayerPowerManager>().TakePowerDamage(Damage);
             }
-            this.gameObject.SetActive(false);
+
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                gameObject.SetActive(false);
+            }
+            gameObject.SetActive(false);
         }
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<PlayerPowerManager>().TakePowerDamage(Damage);
+        }
+
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            gameObject.SetActive(false);
+        }
+        gameObject.SetActive(false);
     }
 }

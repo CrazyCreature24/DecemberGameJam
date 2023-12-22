@@ -11,15 +11,22 @@ public class LevelManager : MonoBehaviour
     public GameObject m_BatteryPrefab;
     GameObject[] m_BatteryLocations;
 
+    public GameObject m_ShieldPrefab;
+    GameObject[] m_ShieldLocations;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        PoolManager.CleanPools();
+
         // This should save a reference to all consumable locations, so they can be respawned on failure
 
         m_BatteryLocations = GameObject.FindGameObjectsWithTag("BatterySpawn");
+        m_ShieldLocations = GameObject.FindGameObjectsWithTag("ShieldSpawn");
 
         SpawnBatteries();
+        SpawnShields();
 
         m_CurrentTime = m_LevelTime;
 
@@ -42,6 +49,7 @@ public class LevelManager : MonoBehaviour
         }
 
         SpawnBatteries();
+        SpawnShields();
     }
 
     public void SpawnBatteries()
@@ -53,6 +61,19 @@ public class LevelManager : MonoBehaviour
             if (indicator != null)
             {
                 indicator.SpawnBattery(m_BatteryPrefab);
+            }
+        }
+    }
+
+    public void SpawnShields()
+    {
+        foreach (GameObject obj in m_ShieldLocations)
+        {
+            ShieldSpawnIndicator indicator = obj.GetComponent<ShieldSpawnIndicator>();
+
+            if (indicator != null)
+            {
+                indicator.SpawnShield(m_ShieldPrefab);
             }
         }
     }

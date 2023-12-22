@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe1ef205a91f6545a501c58d68cca0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NewScene: Main Menu
+  m_NewScene: Level 2
 --- !u!114 &109547891 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7703274734278531027, guid: 90e9fbca2cf55d6478e009a8d8e58824, type: 3}
@@ -332,6 +332,10 @@ PrefabInstance:
     - target: {fileID: 101279950704011339, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
       propertyPath: m_CanMove
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 101279950704011339, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5454861835284704756, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
       propertyPath: m_LocalScale.y
@@ -782,6 +786,10 @@ PrefabInstance:
     - target: {fileID: 101279950704011339, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
       propertyPath: m_CanMove
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 101279950704011339, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5454861835284704756, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
       propertyPath: m_LocalScale.y
@@ -1417,6 +1425,10 @@ PrefabInstance:
     - target: {fileID: 101279950704011339, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
       propertyPath: m_CanMove
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 101279950704011339, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5454861835284704756, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
       propertyPath: m_LocalScale.y
@@ -3874,6 +3886,7 @@ MonoBehaviour:
   m_LevelTime: 60
   m_CurrentTime: 10
   m_BatteryPrefab: {fileID: 6778922114267734281, guid: b7f1f5c31c1ae7d4d8a87eea6313c865, type: 3}
+  m_ShieldPrefab: {fileID: 0}
 --- !u!4 &1860482546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7752007558882949766, guid: d4ceffc5f23389d4b99b252c8f554163, type: 3}
@@ -4093,6 +4106,10 @@ PrefabInstance:
     - target: {fileID: 101279950704011339, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
       propertyPath: m_CanMove
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 101279950704011339, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5454861835284704756, guid: 88e2bdfe2b67806419dba236a49c8625, type: 3}
       propertyPath: m_LocalScale.y

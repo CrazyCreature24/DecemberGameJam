@@ -155,6 +155,10 @@ MonoBehaviour:
   m_CanMove: 1
   m_MoveSpeed: 0.01
   m_MoveTime: 1
+  m_RotationSpeed: 50
+  m_SpawnIndicator: {fileID: 0}
+  ShieldDuration: 10
+  DamageReduction: 0.502
 --- !u!1 &6247644163656119982
 GameObject:
   m_ObjectHideFlags: 0

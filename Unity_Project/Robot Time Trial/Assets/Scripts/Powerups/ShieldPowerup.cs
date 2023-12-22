@@ -10,6 +10,8 @@ public class ShieldPowerup : MonoBehaviour
     public float m_MoveTime = 1.0f;
     public float m_RotationSpeed = 50.0f;
 
+    public ShieldSpawnIndicator m_SpawnIndicator;
+
     [Header("Shield Stats")]
     [SerializeField]
     float ShieldDuration = 4.0f;
@@ -52,6 +54,9 @@ public class ShieldPowerup : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerPowerManager>().ActivateShield(ShieldDuration, DamageReduction);
             gameObject.SetActive(false);
+
+            m_SpawnIndicator.SetIsActivePowerup(false);
+            m_SpawnIndicator = null;
         }
     }
 }

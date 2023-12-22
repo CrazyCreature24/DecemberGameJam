@@ -8,6 +8,8 @@ TagManager:
   - Powerup
   - BatterySpawn
   - Enemy
+  - ShieldSpawn
+  - Wall
   layers:
   - Default
   - TransparentFX

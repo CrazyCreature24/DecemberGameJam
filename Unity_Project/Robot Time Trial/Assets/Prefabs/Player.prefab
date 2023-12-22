@@ -262,12 +262,12 @@ MonoBehaviour:
   m_Velocity: {x: 0, y: 0, z: 0}
   GroundCheckStartOffsetY: 0.5
   CheckForGroundRadius: 0.5
-  GroundResolutionOverlap: 0.05
+  GroundResolutionOverlap: 0.01
   InstantStepUp: 0
   StepUpEaseSpeed: 10
-  MinAllowedSurfaceAngle: 15
+  MinAllowedSurfaceAngle: 45
   MaxMidAirJumpTime: 0.3
-  JumpSpeed: 10
+  JumpSpeed: 8
   MaxJumpHoldTime: 0.5
   JumpPushOutOfGroundAmount: 0.5
   m_Controller: {fileID: 0}

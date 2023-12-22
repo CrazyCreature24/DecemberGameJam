@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Powerups\BatteryPowerup.cs" />
     <Compile Include="Assets\Scripts\Enemy\Laser_Move.cs" />
+    <Compile Include="Assets\Scripts\Powerups\ShieldSpawnIndicator.cs" />
     <Compile Include="Assets\Scripts\Object Pooling\PoolManager.cs" />
   </ItemGroup>
   <ItemGroup>

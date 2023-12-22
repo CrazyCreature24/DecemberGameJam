@@ -58,5 +58,10 @@ public class ObjectPool
         return returnObject;
     }
 
+    public void EmptyPool()
+    {
+        m_PoolGameObjects.Clear();
+    }
+
     List<GameObject> m_PoolGameObjects = new List<GameObject>();
 }

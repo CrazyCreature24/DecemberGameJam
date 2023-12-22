@@ -12,8 +12,8 @@ public class PoolManager : MonoBehaviour
     {
         //m_SecondsPoolRefreshRate = 15;
 
-        if (CleanUpStaleObjects)
-            StartCoroutine(CleanPools());
+        //if (CleanUpStaleObjects)
+            //StartCoroutine(CleanPools());
     }
 
     private static ObjectPool CreateNewPool(GameObject prefab)
@@ -62,7 +62,7 @@ public class PoolManager : MonoBehaviour
     }
 
 
-    public static IEnumerator CleanPools()
+    public static void CleanPools()
     {
         while (true)
         {
@@ -70,9 +70,10 @@ public class PoolManager : MonoBehaviour
 
             foreach (ObjectPool pool in m_Pools)
             {
-                if (pool.lastUsed + 0.000000001f < Time.timeSinceLevelLoad)
+                //if (pool.lastUsed + 0.000000001f < Time.timeSinceLevelLoad)
                 {
-                    pool.RemoveDisabledObjects();
+                    //pool.RemoveDisabledObjects();
+                    pool.EmptyPool();
                     if (pool.ObjectCount < 1)
                     {
                         poolsToDelete.Add(pool);
@@ -81,7 +82,7 @@ public class PoolManager : MonoBehaviour
             }
             poolsToDelete.ForEach(x => m_Pools.Remove(x));
 
-            yield return new WaitForSeconds(0.00001f);
+            return;
         }
     }
 
