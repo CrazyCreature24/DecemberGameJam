@@ -114,4 +114,13 @@ public class KamikazeSpawner : MonoBehaviour
         obj.GetComponent<KamikazeDrone>().Init();
         numSpawned++;
     }
+
+    public void Reset()
+    {
+        numSpawned = 0;
+        ElapsedTime = 0.0f;
+        IsActivated = false;
+        StartTimerReached = false;
+        ElapsedTime = 0.0f;
+    }
 }
