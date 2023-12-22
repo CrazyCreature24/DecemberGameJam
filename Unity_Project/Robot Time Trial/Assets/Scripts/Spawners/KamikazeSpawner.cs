@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KamikazeSpawner : MonoBehaviour
+public class KamikazeSpawner : MonoBehaviour, IRespawn
 {
     [SerializeField]
     GameObject SpawnLocation;
@@ -115,7 +115,7 @@ public class KamikazeSpawner : MonoBehaviour
         numSpawned++;
     }
 
-    public void Reset()
+    public void Respawn()
     {
         numSpawned = 0;
         ElapsedTime = 0.0f;

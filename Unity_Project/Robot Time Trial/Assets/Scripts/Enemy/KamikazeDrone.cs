@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class KamikazeDrone : MonoBehaviour
+public class KamikazeDrone : MonoBehaviour, IRespawn
 {
     [Header("Stats")]
     [SerializeField]
@@ -134,6 +134,14 @@ public class KamikazeDrone : MonoBehaviour
             }
         }
         state = State.Spawning;
+        gameObject.SetActive(false);
+    }
+
+
+    public void Respawn()
+    {
+        state = State.Spawning;
+        ElapsedTime = 0.0f;
         gameObject.SetActive(false);
     }
 }
