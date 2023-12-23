@@ -40,11 +40,11 @@ public class UIMainMenu : MonoBehaviour
 
     private void Exit()
     {
-        if (UnityEditor.EditorApplication.isPlaying == true)
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-        else
+        //if (UnityEditor.EditorApplication.isPlaying == true)
+        //{
+        //    UnityEditor.EditorApplication.isPlaying = false;
+        //}
+        
         {
             Application.Quit();
         }

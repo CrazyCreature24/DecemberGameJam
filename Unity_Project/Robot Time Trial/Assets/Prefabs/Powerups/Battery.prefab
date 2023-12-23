@@ -72,6 +72,8 @@ MonoBehaviour:
   m_CanMove: 1
   m_MoveSpeed: 0.01
   m_MoveTime: 1
+  m_PickupPowerIncrease: 0.3
+  m_SpawnIndicator: {fileID: 0}
 --- !u!1001 &9052734855062469430
 PrefabInstance:
   m_ObjectHideFlags: 0

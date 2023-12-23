@@ -14,6 +14,9 @@ public class LevelManager : MonoBehaviour
     public GameObject m_ShieldPrefab;
     GameObject[] m_ShieldLocations;
 
+    GameObject[] m_Lights;
+    public float m_LightBaseIntensity = 0.5f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class LevelManager : MonoBehaviour
 
         m_BatteryLocations = GameObject.FindGameObjectsWithTag("BatterySpawn");
         m_ShieldLocations = GameObject.FindGameObjectsWithTag("ShieldSpawn");
+        m_Lights = GameObject.FindGameObjectsWithTag("Light");
 
         SpawnBatteries();
         SpawnShields();
@@ -36,6 +40,8 @@ public class LevelManager : MonoBehaviour
     void FixedUpdate()
     {
         HandleLevelTimer();
+
+        HandleLighting();
     }
 
     public void Respawn()
@@ -75,6 +81,16 @@ public class LevelManager : MonoBehaviour
             {
                 indicator.SpawnShield(m_ShieldPrefab);
             }
+        }
+    }
+
+    public void HandleLighting()
+    {
+        foreach (GameObject obj in m_Lights)
+        {
+            Light light = obj.GetComponent<Light>();
+
+            light.intensity = m_LightBaseIntensity * ((m_LevelTime / 100) * m_CurrentTime) + 0.2f;
         }
     }
 
